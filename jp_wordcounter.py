@@ -23,7 +23,7 @@ def remove_comments(line, comment_chars=["//","#","$"]):
 def read_charfile(fn):
     output = []
     for line in open(fn,'r'):
-        output.append(line)
+        output.append(line.strip())
     return output
 
 
@@ -36,7 +36,7 @@ if __name__ == "__main__":
     char_fn = args.char_file
 
     if char_fn == "":
-        comments_list = []
+        comment_list = []
     else:
         comment_list = read_charfile(char_fn)
 
@@ -53,8 +53,9 @@ if __name__ == "__main__":
             comment_trigger, bad_line= dropped
             dropped_dict.setdefault(comment_trigger,[]).append(bad_line)
 
-
+    #fulltext countring
     wc = wordcount.get_wordcount(''.join(full_text))
+    print "==FULL TEXT=="
     print "TEXT:",wc
     print "COUNTED LINES WITH TEXT::", line_counter
     for k,v in dropped_dict.iteritems():
