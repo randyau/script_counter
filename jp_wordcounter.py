@@ -55,7 +55,6 @@ if __name__ == "__main__":
 
     #fulltext countring
     wc = wordcount.get_wordcount(''.join(full_text))
-    print "==FULL TEXT=="
     print "TEXT:",wc
     print "COUNTED LINES WITH TEXT::", line_counter
     for k,v in dropped_dict.iteritems():
